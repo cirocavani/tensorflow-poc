@@ -1,0 +1,6 @@
+<configuration>
+  <property>
+    <name>yarn.resourcemanager.hostname</name>
+    <value>HADOOP_ADDRESS</value>
+  </property>
+</configuration>

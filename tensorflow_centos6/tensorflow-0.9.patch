@@ -1,0 +1,13 @@
+diff --git a/tensorflow/tensorflow.bzl b/tensorflow/tensorflow.bzl
+index db7c130..6d133f0 100644
+--- a/tensorflow/tensorflow.bzl
++++ b/tensorflow/tensorflow.bzl
+@@ -624,7 +624,7 @@ def tf_custom_op_library(name, srcs=[], gpu_srcs=[], deps=[]):
+   )
+ 
+ def tf_extension_linkopts():
+-  return []  # No extension link opts
++  return ["-lrt"]
+ 
+ def tf_extension_copts():
+   return []  # No extension c opts

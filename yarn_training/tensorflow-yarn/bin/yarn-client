@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd `dirname "$0"`
+
+java \
+    -cp ../lib/yarn-client_deploy.jar:../lib/conf.jar \
+    tensorflow.yarn.Client \
+    -shell_script $1 \
+    -master_jar ../lib/application-master.jar

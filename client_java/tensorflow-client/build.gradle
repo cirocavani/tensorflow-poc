@@ -1,0 +1,54 @@
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = "tensorflow.client.Main"
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = [
+                'src/main/java',
+                'build/generated/source/proto/main/java',
+                'build/generated/source/proto/main/grpc',
+            ]
+        }
+    }
+}
+
+dependencies {
+    compile 'io.grpc:grpc-netty:0.15.0'
+    compile 'io.grpc:grpc-protobuf:0.15.0'
+    compile 'io.grpc:grpc-stub:0.15.0'
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.7.7'
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.0.0-beta-3"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:0.15.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}

@@ -1,0 +1,9 @@
+workspace(name = "skeleton")
+
+local_repository(
+    name = "tf_serving",
+    path = __workspace_dir__ + "/serving",
+)
+
+load('//serving/tensorflow_serving:workspace.bzl', 'tf_serving_workspace')
+tf_serving_workspace(__workspace_dir__ + "/serving")

@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+cd `dirname "$0"`/..
+
+bin/skeleton-server --port=8888 `pwd`/deploy
